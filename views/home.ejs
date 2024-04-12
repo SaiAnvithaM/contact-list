@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>
+            <%= locals.title%>
+        </title>
+        <script  src="https://kit.fontawesome.com/1dc91dcf26.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/css/home.css"> <!--no need to write ../assets because static is already set to assets-->
+    </head>
+    <body>
+        
+        <h1 id="contact-heading"> <i id="font-icon" class="fa-solid fa-address-book"></i>My Contacts List</h1>
+        <ul>
+            <% for(let i of contact_list){%>
+            <li id="contact-li">
+                <p><%= i.name%></p>
+                <p><%= i.phone%></p>
+                <a href="delete-contact/?id=<%=i._id%>" class="delete-button"><i class="fa-solid fa-trash-can"></i></a> <!--No spaces should be giving to the params-->
+            </li>
+            <%}%>
+        </ul>
+        <form action="/create-contact" method="POST">
+            <input type="text" name="name" placeholder="enter name" required>
+            <input type="number" name="phone" placeholder="enter phone number" required>
+            <button>Add</button>
+        </form>
+
+        <script type="text/javascript" src="/js/home.js"></script>
+    </body>
+</html>
